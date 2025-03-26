@@ -188,8 +188,9 @@ print(f"\nTask 14: Convert to datetime: \n{minutes_list}")
 
 # Task 15: Write Out Sorted List
 
-try:
-    def write_sorted_list():
+
+def write_sorted_list():
+    try:
         # Sort minutes_list in ascending order of datetime
         minutes_list.sort(key=lambda x: x[1])
 
@@ -208,21 +209,24 @@ try:
 
         return sorted_list  # Return the final processed list
     
-    write_sorted_list()
+    except Exception as e:
+        print(f"An exception occurred. Exception type: {type(e).__name__}")
 
-    print(f"\nTask 15: Write Out Sorted List: \n{read_scv_file('./minutes.csv')}")
+        trace_back = traceback.extract_tb(e.__traceback__)
+        stack_trace = list()
+        message = str(e)
 
-except Exception as e:
-    print(f"An exception occurred. Exception type: {type(e).__name__}")
+        for trace in trace_back:
+            stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
 
-    trace_back = traceback.extract_tb(e.__traceback__)
-    stack_trace = list()
-    message = str(e)
+        if message:
+            print(f"Exception message: {message}")
 
-    for trace in trace_back:
-        stack_trace.append(f'File : {trace[0]} , Line : {trace[1]}, Func.Name : {trace[2]}, Message : {trace[3]}')
+        print(f"Stack trace: {stack_trace}")
 
-    if message:
-        print(f"Exception message: {message}")
+write_sorted_list()
 
-    print(f"Stack trace: {stack_trace}")
+print(f"\nTask 15: Write Out Sorted List: \n{write_sorted_list()}")
+
+print(f"\nTask 15: Write Out Sorted List: \n{read_scv_file('./minutes.csv')}")
+
