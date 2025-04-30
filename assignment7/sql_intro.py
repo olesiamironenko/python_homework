@@ -1,6 +1,7 @@
 import sqlite3
 import pandas as pd
 
+#  3.2: Create functions, one for each of the tables, to add entries
 def add_publisher(publisher_name, contact, address, phone):
     try:
         cursor.execute("INSERT INTO publishers (publisher_name, contact, address, phone) VALUES (?,?,?,?)", (publisher_name, contact, address, phone))
@@ -28,8 +29,11 @@ def add_subscription(subscriber_id, magazine_id):
 # Connect to a new SQLite database
 with  sqlite3.connect("../db/magazines.db") as conn:  
     print("Database created and connected successfully.")
-    conn.execute("PRAGMA foreign_keys = 1") # This turns on the foreign key constraint
+    # 3.1: turn on the foreign key constraint
+    conn.execute("PRAGMA foreign_keys = 1") 
     cursor = conn.cursor()
+
+    # 2.2: create tables
 
     try:
         cursor.execute("""
@@ -88,6 +92,8 @@ with  sqlite3.connect("../db/magazines.db") as conn:
         print(f"SQL Error: {e}")
 
     conn.commit() 
+
+    # 3.3: populate each of the 4 tables with at least 3 entries
 
     add_publisher('Hillman Periodicals', 'Alex L. Hillman', '535 Fifth Avenue, New York City, NY', '+12129724865')
     add_publisher('Blood-Horse Publications', 'Marla Bickel', '821 Corporate Dr, Lexington, KY', '+18005825604')
