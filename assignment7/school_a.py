@@ -37,3 +37,5 @@ with  sqlite3.connect("../db/school.db") as conn:  # Create the file here, so th
     """)
 
     print("Tables created successfully.")
+
+    
