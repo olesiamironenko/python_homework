@@ -1,11 +1,11 @@
 import readline  # Provides command line editing and history
 import sqlite3   # For SQL command execution
 import sys
+
 conn = sqlite3.connect("./db/lesson.db",isolation_level='IMMEDIATE')
 conn.execute("PRAGMA foreign_keys = 1")
 
 cursor = conn.cursor()
-
 
 tables = cursor.execute("SELECT name FROM sqlite_schema WHERE type='table' ORDER BY 'name'").fetchall()
 print("The tables in this database are:")
@@ -66,3 +66,12 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+import pandas as pd
+import sqlite3
+
+with sqlite3.connect("./db/lesson.db") as conn:
+    sql_statement = """SELECT c.customer_name, o.order_id, p.product_name FROM customers c JOIN orders o ON c.customer_id = o.customer_id 
+    JOIN line_items li ON o.order_id = li.order_id JOIN products p ON li.product_id = p.product_id;"""
+    df = pd.read_sql_query(sql_statement, conn)
+    print(df)
