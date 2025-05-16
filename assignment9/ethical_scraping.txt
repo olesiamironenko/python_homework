@@ -1,0 +1,9 @@
+Q1: Which sections of the Wikipedia website are restricted for crawling?
+A1: Everything except articles. Even articles are allowed for crawling for low-speed bots only. 
+    Dynamically-generated pages are precisely restricted for crawling by any bot.
+
+Q2: Are there specific rules for certain user agents?
+A2: Yes, there are some specific rules for certain user agents. 
+    Some user agents are dissallowed to any page of Wikipedia under any circumstances, others allowed under certain conditions.
+
+Websites use robots.txt to declare which parts of the Websites are allowed and which are disallowed for crawling. It zalso describes specificrules for certain user agents. Those descriptions let potantial crawlers know how to crawl the source ethically.
