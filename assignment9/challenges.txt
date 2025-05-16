@@ -1,0 +1,8 @@
+My greatest challenge during this assignment was handling pagination when  scraping library search results:
+    My code was scraping the first page twice and the last (14th) page 0 times.
+
+The problem was using:
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'div.results_container'))
+    )
+which 
