@@ -1,0 +1,15 @@
+My greatest challenge during this assignment was handling pagination when  scraping library search results:
+    My code was scraping the first page twice and the last (14th) page 0 times.
+
+I thought the problem was in getting the wrong link for the next page.
+
+I also was getting StaleElementReferenceException here and there during scraping each time I run the program.
+
+It turned out problem was using:
+    WebDriverWait(driver, 30).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'div.results_container'))
+    )
+after clicking the next page link.
+
+I solved both problems by replacing WebDriverWait with time.sleep(4)
+
