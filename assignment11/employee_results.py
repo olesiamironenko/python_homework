@@ -21,4 +21,18 @@ sql_employee_revenue = """SELECT last_name AS last_name, SUM(price * quantity) a
     GROUP BY e.employee_id;"""
 
 employee_results = pd.read_sql_query(sql_employee_revenue, conn)
-print(employee_results)
+#print(employee_results)
+
+# 1.3: Create a bar chart where the x axis is the employee last name and the y axis is the revenue
+patches = employee_results.plot(x="last_name", y="revenue", kind="bar", color="skyblue")
+
+# 1.4: Give appropriate titles, labels, and colors.
+plt.title("Revenue by Employee", fontsize=14, fontweight='bold')
+plt.xlabel("Employees", fontsize=12)
+plt.ylabel("Revenue ($)", fontsize=12)
+plt.tight_layout()
+
+# 1.5: Show the plot.
+plt.show()
+
+
