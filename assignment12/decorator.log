@@ -1,0 +1,15 @@
+function: hello_world
+positional parameters: none
+keyword parameters: none
+return: None
+
+function: accept_positional_args
+positional parameters: [2, 3, 4]
+keyword parameters: none
+return: True
+
+function: accept_kw_args
+positional parameters: none
+keyword parameters: {'a': '1', 'b': '2', 'c': '3'}
+return: <function logger_decorator at 0x10fc03600>
+
