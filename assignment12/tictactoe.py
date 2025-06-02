@@ -71,15 +71,9 @@ class Board:
                 return True, "Cat's Game"
 
         if not win and not cat:
-            if self.turn == "X": 
-                return (False, "X's turn.")
-            else:
-                return (False, "O's turn.")
+            return (False, "X's turn.") if self.turn == "X" else (False, "O's turn.")
         else:
-            if self.turn == "O":
-                return (True, "X wins!")
-            else:
-                return (True, "O wins!")
+            return (True, "X wins!") if self.turn == "O" else (True, "O wins!")
             
 # 6.7: Implement the game within the mainline code of tictactoe.py
 if __name__ == "__main__":
